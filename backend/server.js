@@ -42,6 +42,17 @@ app.get('/', (req, res) => {
 // --- INITIALIZE DATABASE CONNECTIVITY ---
 connectDatabase();
 
+// --- ENSURE DB IS READY BEFORE HANDLING ANY API REQUEST ---
+app.use(async (req, res, next) => {
+  try {
+    await connectDatabase();
+    next();
+  } catch (err) {
+    console.error('Middleware DB connection error:', err);
+    res.status(500).json({ error: 'Database connection failed' });
+  }
+});
+
 // --- USER AUTHENTICATION ROUTE ENDPOINTS ---
 app.post('/api/auth/register', registerUser);
 app.post('/api/auth/login', loginUser);
