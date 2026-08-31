@@ -1,4 +1,4 @@
-const User = require('../models/user');
+const User = require('../models/User');
 const VerificationId = require('../models/VerificationId');
 // ahnaf start
 const { verifyEmail } = require('../utils/emailVerifier');
