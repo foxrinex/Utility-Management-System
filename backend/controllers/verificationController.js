@@ -1,5 +1,5 @@
 const VerificationId = require('../models/VerificationId');
-const User = require('../models/user');
+const User = require('../models/User');
 
 // --- GENERATE A NEW VERIFICATION ID ---
 const generateVerificationId = async (req, res) => {
