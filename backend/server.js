@@ -20,8 +20,16 @@ const app = express();
 
 // --- APPLY NETWORKING MIDDLEWARE ---
 app.use(cors({
-  origin: true,
-  credentials: true
+  origin: [
+    'https://utility-management-system.vercel.app',
+    'https://utility-management-system-m9bn.vercel.app',
+    /^https:\/\/utility-management-system-.*-team-1-75cf\.vercel\.app$/,
+    'http://localhost:5173',
+    'http://localhost:3000'
+  ],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use(express.json());
 
