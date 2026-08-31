@@ -19,7 +19,10 @@ const { submitBkashPayment, getAuditorTransactions, verifyTransaction, exportTra
 const app = express();
 
 // --- APPLY NETWORKING MIDDLEWARE ---
-app.use(cors());
+app.use(cors({
+  origin: true,
+  credentials: true
+}));
 app.use(express.json());
 
 // --- ROOT HEALTH CHECK ROUTE ---
