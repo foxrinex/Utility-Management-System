@@ -210,7 +210,7 @@ app.patch('/api/banner/toggle/:id', async (req, res) => {
 app.patch('/api/user/toggle-status', async (req, res) => {
   try {
     const { userId } = req.body;
-    const User = require('./models/User');
+    const User = require('./models/user');
     const user = await User.findById(userId);
     if (!user) return res.status(404).json({ error: 'User not found' });
     user.status = user.status === 'ON_DUTY' ? 'OFF_DUTY' : 'ON_DUTY';
