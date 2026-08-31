@@ -31,6 +31,10 @@ app.use(cors({
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
+// Explicitly handle preflight requests for all routes to prevent redirects
+app.options('*', cors());
+
 app.use(express.json());
 
 // --- ROOT HEALTH CHECK ROUTE ---
