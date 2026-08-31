@@ -22,6 +22,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// --- ROOT HEALTH CHECK ROUTE ---
+app.get('/', (req, res) => {
+  res.send('Utilix Backend Server is running successfully!');
+});
+
 // --- INITIALIZE DATABASE CONNECTIVITY ---
 connectDatabase();
 
@@ -119,7 +124,7 @@ app.post('/api/banner/post', async (req, res) => {
     //NUSFAT: Send email to all registered residents
     try {
       const nodemailer = require('nodemailer');
-      const User = require('./models/user');
+      const User = require('./models/User');
 
       const transporter = nodemailer.createTransport({
         service: 'gmail',
